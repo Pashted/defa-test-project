@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "build": "webpack --progress --mode production",
+    "start": "start http://localhost:3000/ & node ./bin/www",
+    "build": "npm install > ./install.log & npm run webpack & npm run build-images & npm start",
+    "build-images": "node ./bin/resize-images.js >> ./install.log",
+    "webpack": " webpack --progress --mode production >> ./install.log ",
     "dev": "webpack --progress --watch"
   },
   "dependencies": {
