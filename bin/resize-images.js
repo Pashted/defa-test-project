@@ -17,7 +17,7 @@ fs.mkdir(final_dir, err => {
 
 
                 let src = path.resolve(src_dir, file), // откуда читаем
-                    destination = path.resolve(final_dir, file); // куда сохраняем
+                    destination = path.resolve(final_dir, file.replace(/\.([^.]+)$/, '_small.$1')); // куда сохраняем
 
                 sharp(src)
                     .jpeg({
@@ -25,7 +25,7 @@ fs.mkdir(final_dir, err => {
                         progressive: true
                     })
                     .resize({
-                        width:              2560, // меняем размер
+                        width:              1600, // меняем размер
                         withoutEnlargement: true // не увеличиваем маленькие
                     })
                     .toFile(destination, (err, info) => {
