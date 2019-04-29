@@ -1,10 +1,5 @@
-const webpack = require('webpack'),
-    path = require('path'),
-    resizer = require('webpack-images-resizer'),
-    copy = require('copy-webpack-plugin'),
-
-    img_list = require('./src/js/images'), // список файлов из папки изображений
-    img_options = { width: 2560, quality: 80 };
+const path = require('path'),
+    Copy = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -16,8 +11,7 @@ module.exports = {
         filename: './js/bundle.js',
     },
     plugins: [
-        new resizer(img_list, img_options),
-        new copy([
+        new Copy([
             { from: 'src/static', to: './' },
         ])
     ],
