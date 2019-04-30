@@ -24,7 +24,7 @@ let makeFile = (file, suffix, size) => {
 };
 
 // создаем папку
-fs.mkdir(final_dir, err => {
+fs.mkdir(final_dir, { recursive: true }, err => {
     if (err) console.log(err);
 
     // ищем файлы в папке с изображениями
