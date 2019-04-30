@@ -4,6 +4,25 @@ const sharp = require('sharp'),
     src_dir = path.resolve(__dirname, '../src/images/'),
     final_dir = path.resolve(__dirname, '../public/images');
 
+let makeFile = (file, suffix, size) => {
+
+    let src = path.resolve(src_dir, file), // откуда читаем
+        small = path.resolve(final_dir, file.replace(/\.([^.]+)$/, `_${suffix}.$1`)); // куда сохраняем
+
+    sharp(src)
+        .jpeg({
+            quality:     80, // сжимаем изображение
+            progressive: true
+        })
+        .resize({
+            width:              size, // меняем размер
+            withoutEnlargement: true // не увеличиваем маленькие
+        })
+        .toFile(small, (err, info) => {
+            if (err) throw err;
+        });
+};
+
 // создаем папку
 fs.mkdir(final_dir, err => {
     if (err) console.log(err);
@@ -15,22 +34,9 @@ fs.mkdir(final_dir, err => {
         files.forEach(file => {
                 console.log(`Resizing image ${file} ...`);
 
+                makeFile(file, 'normal', 1600);
+                makeFile(file, 'small', 640);
 
-                let src = path.resolve(src_dir, file), // откуда читаем
-                    destination = path.resolve(final_dir, file.replace(/\.([^.]+)$/, '_small.$1')); // куда сохраняем
-
-                sharp(src)
-                    .jpeg({
-                        quality:     80, // сжимаем изображение
-                        progressive: true
-                    })
-                    .resize({
-                        width:              1600, // меняем размер
-                        withoutEnlargement: true // не увеличиваем маленькие
-                    })
-                    .toFile(destination, (err, info) => {
-                        if (err) throw err;
-                    });
             }
         );
     });
