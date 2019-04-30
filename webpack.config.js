@@ -1,5 +1,6 @@
 const path = require('path'),
-    Copy = require('copy-webpack-plugin');
+    Copy = require('copy-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -14,24 +15,17 @@ module.exports = {
         new Copy([
             { from: 'src/html', to: './' },
             { from: 'src/icons/favicon.ico', to: './' },
-        ])
+        ]),
+        new ExtractTextPlugin('template.css')
     ],
     module:  {
         rules: [
             {
                 test: /\.less$/,
-                use:  [
-                    "style-loader",
-                    {
-                        loader:  "css-loader",
-                        options: {
-                            sourceMap:      true,
-                            modules:        true,
-                            localIdentName: "[local]"
-                        }
-                    },
-                    "less-loader"
-                ]
+                use:  ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use:      ['css-loader', 'less-loader']
+                })
             },
             {
                 test:    /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
