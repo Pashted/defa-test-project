@@ -1,1 +1,1 @@
-import "../style/template.less";
+import "../less/template.less";

@@ -9,7 +9,7 @@ module.exports = {
     entry:   './src/js/index.js',
     output:  {
         path:     path.resolve('./public'),
-        filename: './js/bundle.js',
+        filename: './scripts/bundle.js',
     },
     plugins: [
         new Copy([
