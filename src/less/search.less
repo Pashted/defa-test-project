@@ -9,7 +9,7 @@
         border:        none;
         border-bottom: 1px solid #ddd;
         outline:       none;
-        padding:       20px 0;
+        padding:       20px 50px 20px 0;
         font-size:     @font-size-smaller;
         font-family:   inherit;
         color:         inherit;
@@ -20,10 +20,14 @@
         &::placeholder { color: inherit; }
     }
     &__icon {
-        position:  absolute;
-        right:     20px;
-        top:       20px;
-        cursor:    text;
-        font-size: @font-size-normal;
+        position:   absolute;
+        right:      0;
+        bottom:     0;
+        padding:    20px;
+        cursor:     pointer;
+        font-size:  @font-size-normal;
+        background: none;
+        border:     none;
+        outline:    none;
     }
 }
