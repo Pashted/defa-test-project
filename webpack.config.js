@@ -12,7 +12,8 @@ module.exports = {
     },
     plugins: [
         new Copy([
-            { from: 'src/static', to: './' },
+            { from: 'src/html', to: './' },
+            { from: 'src/icons/favicon.ico', to: './' },
         ])
     ],
     module:  {

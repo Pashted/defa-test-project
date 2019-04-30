@@ -1,7 +1,7 @@
 const sharp = require('sharp'),
     path = require('path'),
     fs = require('fs'),
-    src_dir = path.resolve(__dirname, '../src/img/'),
+    src_dir = path.resolve(__dirname, '../src/images/'),
     final_dir = path.resolve(__dirname, '../public/images');
 
 // создаем папку
