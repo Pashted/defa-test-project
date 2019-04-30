@@ -1,0 +1,29 @@
+.search {
+    color:         @global-color;
+    position:      relative;
+    margin-bottom: 50px;
+
+    &__input {
+        display:       block;
+        width:         100%;
+        border:        none;
+        border-bottom: 1px solid #ddd;
+        outline:       none;
+        padding:       20px 0;
+        font-size:     @font-size-smaller;
+        font-family:   inherit;
+        color:         inherit;
+        &::-moz-placeholder { color: inherit; }
+        &::-webkit-input-placeholder { color: inherit; }
+        &:-ms-input-placeholder { color: inherit; }
+        &::-ms-input-placeholder { color: inherit; }
+        &::placeholder { color: inherit; }
+    }
+    &__icon {
+        position:  absolute;
+        right:     20px;
+        top:       20px;
+        cursor:    text;
+        font-size: @font-size-normal;
+    }
+}
