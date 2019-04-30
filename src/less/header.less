@@ -1,0 +1,24 @@
+.header {
+    min-height:    600px;
+    display:       flex;
+    margin-bottom: 25px;
+
+
+    &_level_main, &_level_secondary {
+        position: relative;
+        display:  flex;
+
+    }
+
+    &_level_main {
+        width: 63%;
+    }
+
+    &_level_secondary {
+        flex-direction: column;
+        .header__item {
+            height:   50%;
+            position: relative;
+        }
+    }
+}
