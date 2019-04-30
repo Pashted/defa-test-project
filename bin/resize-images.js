@@ -34,8 +34,8 @@ fs.mkdir(final_dir, { recursive: true }, err => {
         files.forEach(file => {
                 console.log(`Resizing image ${file} ...`);
 
-                makeFile(file, 'normal', 1600);
-                makeFile(file, 'small', 640);
+                makeFile(file, 'normal', 1200);
+                makeFile(file, 'small', 400);
 
             }
         );
