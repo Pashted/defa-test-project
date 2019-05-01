@@ -1,0 +1,112 @@
+.catalog-item {
+    margin-bottom: 45px;
+    position:      relative;
+    width:         100%;
+    overflow:      hidden;
+    display:       block;
+
+    &__image {
+        transition:          transform ease 1s;
+        transform:           scale(304 / 290);
+        transform-origin:    39%;
+        width:               100%;
+        height:              290px;
+        background-size:     cover;
+        background-position: center center;
+    }
+
+    &__caption {
+        transition:       opacity ease-in .3s;
+        opacity:          0;
+        position:         absolute;
+        top:              0;
+        left:             0;
+        height:           100%;
+        width:            100%;
+        padding:          0 15px;
+        background-color: fade(black, 43%);
+        display:          flex;
+        font-weight:      bold;
+        font-size:        @catalog-caption-font-size;
+        text-align:       center;
+        cursor:           pointer;
+        box-sizing:       border-box;
+
+        &-text {
+            margin: auto;
+            color:  white;
+        }
+    }
+
+
+    &:hover {
+        .catalog-item__image {
+            transform: scale(1);
+        }
+        .catalog-item__caption {
+            opacity: 1;
+        }
+    }
+
+    &_favourite {
+        .catalog-item__image {
+            transform:        scale(1.092);
+            transform-origin: 77%;
+        }
+
+        &:hover .catalog-item__image {
+            transform: scale(1.035);
+        }
+    }
+
+}
+
+@media (min-width: @screen-size-mobile + 1) {
+    .catalog-item_favourite {
+
+        &:before,
+        &:after {
+            content:          '';
+            position:         absolute;
+            width:            38px;
+            height:           38px;
+            background-color: #fff;
+            border-radius:    38px;
+            z-index:          10;
+        }
+        &:before {
+            left:   -14px;
+            bottom: -14px;
+        }
+        &:after {
+            top:   -12px;
+            right: -16px;
+        }
+
+    }
+}
+
+@media (max-width: @screen-size-tablet) {
+    .catalog-item {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: @screen-size-mobile) {
+    .catalog-item {
+        margin-bottom: 0;
+
+        &__image {
+            height: 260px;
+        }
+
+        &_height-mobile_larger &__image {
+            height: 300px;
+        }
+
+        &_favourite &__image {
+            transform-origin: right;
+        }
+    }
+}
+

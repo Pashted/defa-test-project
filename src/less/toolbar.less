@@ -1,0 +1,42 @@
+.toolbar {
+    position:        absolute;
+    z-index:         30;
+    bottom:          0;
+    width:           100%;
+    height:          104px;
+    display:         flex;
+    justify-content: center;
+    align-items:     center;
+
+    &__button {
+        margin:           0 10px;
+        width:            19px;
+        height:           19px;
+        background-color: white;
+        border-radius:    50%;
+        cursor:           pointer;
+        transition:       opacity ease .3s;
+        &:hover {
+            opacity: .6;
+        }
+        &_active {
+            cursor:           default;
+            background-color: @button-background;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media (min-width: @screen-size-tablet + 1) {
+    .toolbar {
+        display: none;
+    }
+}
+
+@media (max-width: @screen-size-mobile) {
+    .toolbar {
+        height: 100px;
+    }
+}

@@ -1,5 +1,6 @@
 const path = require('path'),
-    Copy = require('copy-webpack-plugin');
+    Copy = require('copy-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -8,29 +9,23 @@ module.exports = {
     entry:   './src/js/index.js',
     output:  {
         path:     path.resolve('./public'),
-        filename: './js/bundle.js',
+        filename: './scripts/bundle.js',
     },
     plugins: [
         new Copy([
-            { from: 'src/static', to: './' },
-        ])
+            { from: 'src/html', to: './' },
+            { from: 'src/icons/favicon.ico', to: './' },
+        ]),
+        new ExtractTextPlugin('template.css')
     ],
     module:  {
         rules: [
             {
                 test: /\.less$/,
-                use:  [
-                    "style-loader",
-                    {
-                        loader:  "css-loader",
-                        options: {
-                            sourceMap:      true,
-                            modules:        true,
-                            localIdentName: "[local]"
-                        }
-                    },
-                    "less-loader"
-                ]
+                use:  ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use:      ['css-loader', 'less-loader']
+                })
             },
             {
                 test:    /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
