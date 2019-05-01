@@ -4,20 +4,29 @@ const sharp = require('sharp'),
     src_dir = path.resolve(__dirname, '../src/images/'),
     final_dir = path.resolve(__dirname, '../public/images');
 
-let makeFile = (file, suffix, size) => {
+let makeFile = (file, suffix, width, height) => {
 
     let src = path.resolve(src_dir, file), // откуда читаем
-        small = path.resolve(final_dir, file.replace(/\.([^.]+)$/, `_${suffix}.$1`)); // куда сохраняем
+        small = path.resolve(final_dir, file.replace(/\.([^.]+)$/, `_${suffix}.$1`)), // куда сохраняем
+
+        resize_params = {
+            // kernel:             sharp.kernel.cubic, // метод интерполяции
+            withoutEnlargement: true // не увеличиваем маленькие
+        };
+
+    // меняем размер
+    if (width)
+        resize_params.width = width;
+    if (height)
+        resize_params.height = height;
 
     sharp(src)
         .jpeg({
-            quality:     80, // сжимаем изображение
+            quality:     90, // сжимаем изображение
             progressive: true
         })
-        .resize({
-            width:              size, // меняем размер
-            withoutEnlargement: true // не увеличиваем маленькие
-        })
+        .resize(resize_params)
+        .sharpen()
         .toFile(small, (err, info) => {
             if (err) throw err;
         });
@@ -35,7 +44,7 @@ fs.mkdir(final_dir, { recursive: true }, err => {
                 console.log(`Resizing image ${file} ...`);
 
                 makeFile(file, 'normal', 1200);
-                makeFile(file, 'small', 400);
+                makeFile(file, 'small', null, 304);
 
             }
         );
