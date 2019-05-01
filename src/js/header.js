@@ -1,0 +1,33 @@
+/**
+ * Рассчитывает координаты правого края для изображения слева и левых краев для изображений справа в шапке
+ */
+
+let leftSideImage = document.getElementsByClassName('header_side_left')[0]
+        .getElementsByClassName('teaser__image-wrap')[0],
+
+    rightSide = document.getElementsByClassName('header_side_right')[0],
+    rightSideImages = rightSide.getElementsByClassName('teaser__image-wrap'),
+
+    rightSideItem = rightSide.getElementsByClassName('header__item')[0],
+
+    setPositions = () => {
+
+        // расчет координат для изображения слева
+        let right = window.innerWidth > 960
+                    ? window.innerWidth - rightSideItem.offsetLeft + 3
+                    : 0;
+
+        leftSideImage.style.right = right + 'px';
+
+
+        // расчет координат для изображений справа
+        let left = window.innerWidth > 960
+                   ? rightSideItem.offsetLeft
+                   : 0;
+
+        for (let i = 0; i < rightSideImages.length; i++)
+            rightSideImages[i].style.left = left + 'px';
+
+    };
+
+export { setPositions };
