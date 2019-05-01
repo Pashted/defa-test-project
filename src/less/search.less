@@ -4,30 +4,39 @@
     margin-bottom: 50px;
 
     &__input {
-        display:       block;
-        width:         100%;
-        border:        none;
-        border-bottom: 1px solid #ddd;
-        outline:       none;
-        padding:       20px 50px 20px 0;
-        font-size:     @font-size-smaller;
-        font-family:   inherit;
-        color:         inherit;
-        &::-moz-placeholder { color: inherit; }
-        &::-webkit-input-placeholder { color: inherit; }
-        &:-ms-input-placeholder { color: inherit; }
-        &::-ms-input-placeholder { color: inherit; }
+        display:        block;
+        width:          100%;
+        border:         none;
+        border-bottom:  1px solid fade(#454545, 18%);
+        outline:        none;
+        padding:        19px 50px 17px 1px;
+        font-size:      @font-size-smaller;
+        line-height:    17px;
+        font-family:    inherit;
+        color:          inherit;
+        letter-spacing: 0.06em;
+        text-shadow:    0 0 1px #aaa;
         &::placeholder { color: inherit; }
+
     }
     &__icon {
-        position:   absolute;
-        right:      0;
-        bottom:     0;
-        padding:    20px;
-        cursor:     pointer;
-        font-size:  @font-size-normal;
-        background: none;
-        border:     none;
-        outline:    none;
+        position:    absolute;
+        right:       0;
+        bottom:      -1px;
+        padding:     20px;
+        cursor:      pointer;
+        font-size:   @font-size-normal;
+        background:  none;
+        border:      none;
+        outline:     none;
+        color:       @global-color;
+        text-shadow: 0 0 1px @global-color;
+    }
+}
+
+@media (max-width: @screen-size-tablet) {
+    .search__icon {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
