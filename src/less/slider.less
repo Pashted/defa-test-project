@@ -1,0 +1,28 @@
+@media (max-width: @screen-size-tablet) {
+    .slider {
+
+        &__item {
+            display: none;
+            padding: 0 78px;
+            &_active {
+                display: flex;
+            }
+        }
+        &__image-wrap {
+            height: 100%;
+            width:  100%;
+            top:    0;
+            left:   0;
+        }
+    }
+}
+
+@media (max-width: @screen-size-mobile) {
+    .slider {
+        height: 350px;
+
+        &__item {
+
+        }
+    }
+}
