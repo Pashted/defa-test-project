@@ -1,0 +1,33 @@
+.button {
+    display:             inline-block;
+    padding:             0 61px;
+    line-height:         57px;
+    background-color:    @primary-background;
+    color:               white;
+    text-decoration:     none;
+    transition:          ease-out .3s;
+    transition-property: color, background-color;
+    outline:             none;
+    &:hover, &:focus {
+        transition:       none;
+        background-color: lighten(@primary-background, 4%);
+    }
+    &:active {
+        background-color: darken(@primary-background, 3%);
+        color:            fade(white, 70%);
+    }
+
+    &_color_white {
+        background-color: white;
+        color:            black;
+
+        &:hover, &:focus {
+            color:            white;
+            background-color: @primary-background;
+        }
+        &:active {
+            background-color: darken(@primary-background, 3%);
+            color:            fade(white, 70%);
+        }
+    }
+}
