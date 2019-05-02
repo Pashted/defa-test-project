@@ -4,13 +4,19 @@
     position:      relative;
     display:       flex;
 
-    &__item {
-        display: flex;
+
+    &_side_left, &_side_right, &__item {
+        display:     flex;
+        align-items: center;
+        box-sizing:  border-box;
     }
 
     &_side_left, &_side_right {
-        display:    flex;
-        box-sizing: border-box;
+        height: 100%;
+    }
+
+    &__item {
+        width: 100%;
     }
 
 }
@@ -25,10 +31,11 @@
         max-width:     ( @screen-size-desktop / 100 ) * @header-width-left-side;
         margin-left:   auto;
         padding-right: @header-space-inner;
+
         .header__item {
             padding-left:  15px;
-            padding-right: 40px;
-            max-width:     615px;
+            padding-right: 25px;
+            max-width:     650px;
         }
     }
 
@@ -41,10 +48,12 @@
         margin-right:   auto;
         padding-left:   @header-space-inner;
         flex-direction: column;
+
         .header__item {
             padding-left:  30px;
             padding-right: 15px;
             height:        50%;
+
             &:first-child {
                 padding-bottom: @header-space-inner;
             }
