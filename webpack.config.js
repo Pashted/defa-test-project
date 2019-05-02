@@ -44,6 +44,16 @@ module.exports = {
     module:  {
         rules: [
             {
+                test:    /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use:     {
+                    loader:  "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env"]
+                    }
+                }
+            },
+            {
                 test: /\.less$/,
                 use:  ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -51,7 +61,7 @@ module.exports = {
                 })
             },
             {
-                test:    /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test:    /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader:  "url-loader",
                 options: {
                     outputPath: "fonts",
