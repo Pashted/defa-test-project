@@ -3,19 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "start http://localhost:3000/ & node ./bin/www",
+    "start": "start ./public/index.html",
     "build": "npm install > ./install.log & npm run webpack & npm run build-images & npm start",
     "build-images": "node ./bin/resize-images.js >> ./install.log",
     "webpack": " webpack --progress --mode production >> ./install.log ",
     "dev": "webpack --progress --watch"
   },
-  "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "^4.1.1",
-    "express": "~4.16.0",
-    "morgan": "~1.9.0"
-  },
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "cssnano": "^4.1.10",
+    "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -23,11 +22,12 @@
     "font-awesome": "^4.7.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "npm-font-open-sans": "^1.1.0",
+    "postcss-loader": "^3.0.0",
     "sharp": "^0.22.1",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.1",
-    "npm-font-open-sans": "^1.1.0"
+    "webpack-cli": "^3.3.1"
   }
 }

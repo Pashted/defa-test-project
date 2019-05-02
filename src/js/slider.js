@@ -5,7 +5,7 @@ let slider = document.getElementsByClassName('slider')[0],
     slides = slider.getElementsByClassName('slider__item'),
     buttons = slider.getElementsByClassName('toolbar__button');
 
-let activate_slide = function() {
+let activate_slide = function () {
 
     for (let i = 0; i < slides.length; i++) {
         // деактивируем слайды
@@ -16,7 +16,8 @@ let activate_slide = function() {
     }
 
     // активируем слайд, связанный с нажатой кнопкой
-    slides[this.dataset.item - 1].classList.add('slider__item_active');
+    let target = this.attributes.getNamedItem('data-item').value - 1;
+    slides[target].classList.add('slider__item_active');
 
     // выделяем кнопку, на которую нажали
     this.classList.add('toolbar__button_active');
@@ -24,7 +25,6 @@ let activate_slide = function() {
 };
 
 let init = () => {
-
     for (let i = 0; i < buttons.length; i++)
         buttons[i].addEventListener('click', activate_slide);
 };
