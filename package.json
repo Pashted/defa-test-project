@@ -18,7 +18,8 @@
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "@intervolga/optimize-cssnano-plugin": "^1.0.6",
+    "cssnano": "^4.1.10",
+    "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
@@ -28,6 +29,7 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "npm-font-open-sans": "^1.1.0",
+    "postcss-loader": "^3.0.0",
     "sharp": "^0.22.1",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",

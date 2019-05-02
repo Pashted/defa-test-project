@@ -1,7 +1,6 @@
 const path = require('path'),
     Copy = require('copy-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let plugins = [
         new Copy([
@@ -18,19 +17,6 @@ process.argv.forEach(param => {
     if (param === 'production')
         dev = false;
 });
-
-if (!dev)
-    plugins.push(
-        new OptimizeCssnanoPlugin({
-            cssnanoOptions: {
-                preset: ['default', {
-                    discardComments: {
-                        removeAll: true,
-                    },
-                }],
-            },
-        })
-    );
 
 module.exports = {
     mode:    dev ? 'development' : 'production',
@@ -57,7 +43,20 @@ module.exports = {
                 test: /\.less$/,
                 use:  ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use:      ['css-loader', 'less-loader']
+                    use:      [
+                        { loader: 'css-loader', options: { sourceMap: true } },
+                        {
+                            loader:  'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                                plugins:   [
+                                    require('autoprefixer'),
+                                    require('cssnano')
+                                ]
+                            },
+                        },
+                        { loader: 'less-loader', options: { sourceMap: true } }
+                    ]
                 })
             },
             {
