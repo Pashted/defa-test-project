@@ -1,4 +1,4 @@
-# Defa test project - part 1
+# Test page - flex layout
 
 #### Установка
 1. Установить [Node.js](https://nodejs.org/en/download/).
